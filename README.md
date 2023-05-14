@@ -1,2 +1,2 @@
 # We.-Development-projects
-The index.js calls the app.js. They display 10 math problems using react.js
+The index.js and the getEquations10.js display 10 1math problems using react.js
