@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Algebright and MathJax Example</title>
+	<script src="https://cdn.jsdelivr.net/npm/algebrite/dist/algebrite.bundle-for-browser.js"></script>
+	<script type="text/javascript" async
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  	</script>
+</head>
+<body>
+
+      <h1>3-Step Equation</h1>
+
+      <div id="equation3step"></div>
+	<script type="text/javascript">
+		// Get random whole numbers in range -10 to 10 for variables a, b, c, and e
+		var a = Math.floor(Math.random() * 21) - 10;
+		if (a == 0) {
+			a = Math.floor(Math.random() * 4) + 1;
+		}
+		var b = Math.floor(Math.random() * 21) - 10;
+		if (b == 0) {
+			b = Math.floor(Math.random() * 4) + 1;
+		}
+		var c = Math.floor(Math.random() * 21) - 10;
+		if (c == 0) {
+			c = Math.floor(Math.random() * 4) + 1;
+		}
+		var e = Math.floor(Math.random() * 21) - 10;
+
+		// Set x = e, then perform the calculations
+		var x = e;
+		e = e * b;
+		e = e + c;
+		e = e * a;
+		
+		var flagNegative = false;
+		if (e < 0) {
+			e = -e;
+			flagNegative = true;
+		}
+		// Get the factors of e and pick a random one
+		var factors = [];
+		for (var i = 1; i <= e; i++) {
+			if (e % i == 0 && i > 0) {
+				factors.push(i);
+			}
+		}
+		var d = factors[Math.floor(Math.random() * factors.length)];
+		
+		if (flagNegative) {
+			e = -e;
+		}
+		e = e / d;
+		
+
+        // Create equation with random values
+        var equation = "\\[ \\frac{" + a + "(" + b + "x+" + c + ")}{" + d + "}=" + e + " \\]";
+
+        // Display equation with MathJax
+        document.getElementById("equation3step").innerHTML = equation;
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "quadratic-formula"]);
+	</script>
+</body>
+</html>
